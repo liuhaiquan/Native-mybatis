@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kavin.mapper.UserMapper">
+
+
+    <!-- 配置一个resultMap解决一对多个问题 -->
+    <resultMap type="com.kavin.pojo.User" id="UserRoleMap">
+        <!-- 配置用户主键 -->
+        <id column="userCode" property="userCode"/>
+        <!-- 配置普通属性 -->
+<!--        <result column="username" property="username"/>
+        <result column="birthday" property="birthday"/>
+        <result column="sex" property="sex"/>
+        <result column="address" property="address"/>-->
+
+        <!-- 映射一对多关系（映射集合） -->
+        <!-- javaType:配置集合类型 -->
+        <!-- ofType:配置集合内部的数据类型 -->
+        <collection property="roleList" javaType="list" ofType="com.kavin.pojo.Role">
+            <!-- 映射联合主键 -->
+            <id column="roleId" property="roleId"/>
+            <id column="R_UserCode" property="userCode"/>
+            <!-- 映射普通属性 -->
+            <result column="inputUserCode" property="inputUserCode"/>
+            <result column="inputTime" property="inputTime"/>
+        </collection>
+    </resultMap>
+
+
+
+    <select id="getUserByUserCode" resultMap="UserRoleMap">  <!-- 没有输出的字段将以null 的值赋值给pojo对应的属性值-->
+           SELECT u.userCode userCode,r.userCode R_UserCode,u.userName,r.roleId
+            FROM sys_user u left join sys_role_user r on  u.userCode = r.userCode
+            WHERE u.userCode='000000000000'
+    </select>
+</mapper>
