@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <!-- 打印查询语句 -->
+        <setting name="logImpl" value="STDOUT_LOGGING" />
+
+        <!-- 开启mybatis 的二级缓存
+          1.在mybatis全局配置文件中开启二级缓存
+          2. 在mapper 文件中加入 cache  标签。具体参考resources\sqlmap\UserMapper.xml
+        -->
+
+        <setting name="cacheEnabled" value="true"/>
+    </settings>
+</configuration>

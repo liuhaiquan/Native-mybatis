@@ -13,10 +13,18 @@ public class AjaxController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("/query")
+    @RequestMapping("/oneCache")
     @ResponseBody
     public String query(){
-        userService.getUserByUserCode();
+        userService.oneCache();
+        return "success";
+    }
+
+
+    @RequestMapping("/twoCache")
+    @ResponseBody
+    public String twoCache(){
+        userService.twoCache();
         return "success";
     }
 

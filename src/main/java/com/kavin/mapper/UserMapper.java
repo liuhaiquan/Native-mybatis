@@ -13,4 +13,6 @@ import com.kavin.pojo.User;
 public interface UserMapper {
 
     public User getUserByUserCode(String UserCode);
+
+    public void saveUser(User user);
 }

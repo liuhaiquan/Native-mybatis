@@ -1,8 +1,9 @@
 package com.kavin.pojo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Role {
+public class Role implements Serializable {
 
     private String userCode;
     private String roleId;
